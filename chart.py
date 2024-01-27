@@ -88,7 +88,7 @@ class App:
     def draw(self):
         bars = [entry.get() for entry in self.entries_bar]
         values = [float(entry.get()) for entry in self.entries_value]
-        colors = [self.entries_color[i].cget('background') for i in range(len(self.entries_color))]
+        colors = [str(self.entries_color[i].cget('background')) for i in range(len(self.entries_color))]
         x_label = self.entry_x.get()
         y_label = self.entry_y.get()
         title = self.entry_title.get()
@@ -105,7 +105,7 @@ class App:
         ax.set_ylabel(y_label, fontsize=14)
         ax.set_title(title, fontsize=16)
         ax.set_xticks(range(len(bars)))
-        ax.set_xticklabels(bars, rotation=45, horizontalalignment='right', fontweight='light')
+        ax.set_xticklabels(bars, horizontalalignment='right', fontweight='light')
 
         # Save the figure
         fig.savefig('bar_chart.png')
