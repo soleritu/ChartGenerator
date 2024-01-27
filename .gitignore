@@ -161,3 +161,4 @@ cython_debug/
 
 #barchart
 bar_chart*.png
+pie_chart*.png
