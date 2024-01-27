@@ -3,7 +3,7 @@ import seaborn as sns
 import tkinter as tk
 from tkinter import ttk, colorchooser
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+import os
 class App:
     def __init__(self, master):
         self.master = master
@@ -107,8 +107,14 @@ class App:
         ax.set_xticks(range(len(bars)))
         ax.set_xticklabels(bars, horizontalalignment='right', fontweight='light')
 
-        # Save the figure
-        fig.savefig('bar_chart.png')
+        # Save the figure with a unique file name
+        file_name = 'bar_chart.png'
+        if os.path.exists(file_name):
+            i = 1
+            while os.path.exists(f"bar_chart_{i}.png"):
+                i += 1
+            file_name = f"bar_chart_{i}.png"
+        fig.savefig(file_name)
 
         # Display the figure in a new window
         new_window = tk.Toplevel(self.master)
